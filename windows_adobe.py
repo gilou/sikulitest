@@ -7,7 +7,9 @@ for app, path in apps.items():
         print('Considering ' + app + '(' + root + path + ')')
         sapp = App(root + path)
         sapp.open()
-        wait(2)
-        wait("1505729222650.png")
-        click("1505729222650.png")
-        wait(2)
+        try:
+            wait(2)
+        except FindFailed:
+            wait("1505729222650.png")
+            click("1505729222650.png")
+            wait(2)
