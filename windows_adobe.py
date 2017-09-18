@@ -9,6 +9,6 @@ for app, path in apps.items():
 npp = App(r'C:\Program Files\Notepad++\notepad++.exe')
 npp.open()
 print(npp)
-
-with npp.window():
-    type("Hello NPP")
+wait(2)
+type("Hello NPP")
+npp.close()
