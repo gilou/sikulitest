@@ -6,6 +6,9 @@ apps = { "After": r"Adobe After Effects CC 2015\Support Files\AfterFX.exe",
 for app, path in apps.items():
         print(app + " - " + root + path)
 
-npp = App.open(r'C:\Program Files\Notepad++\notepad++.exe')
+npp = App(r'C:\Program Files\Notepad++\notepad++.exe')
+npp.open()
+print(npp)
+
 with npp.window():
     type("Hello NPP")
