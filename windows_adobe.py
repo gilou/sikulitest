@@ -8,7 +8,14 @@ for app, path in apps.items():
 
 npp = App(r'C:\Program Files\Notepad++\notepad++.exe')
 npp.open()
-print(npp)
 wait(2)
-type("Hello NPP")
+print(npp)
+wait("1505728633956.png")
+click("1505728633956.png")
+wait("1505728661330.png")
+click("1505728661330.png")
+npp.focus()
+type(50*'Hello NPP ')
+
+wait(3)
 npp.close()
