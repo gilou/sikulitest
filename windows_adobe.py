@@ -11,4 +11,3 @@ for app, path in apps.items():
         wait("1505729222650.png")
         click("1505729222650.png")
         wait(2)
-        sapp.close()
