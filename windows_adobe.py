@@ -15,7 +15,7 @@ click("1505728633956.png")
 wait("1505728661330.png")
 click("1505728661330.png")
 npp.focus()
-type(50*'Hello NPP ')
+type(10*'Hello NPP ')
 
 wait(3)
 npp.close()
