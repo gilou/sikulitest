@@ -15,20 +15,22 @@ def accept():
     click("1509618378336.png")         
 
 for app, path in apps.items()[-1:]:
-        print('Considering ' + app + '(' + root + path + ')')
-        sapp = App(root + path)
+    print('Considering ' + app + '(' + root + path + ')')
+    sapp = App(root + path)
+    if not sapp.isRunning(): sapp.open()
+    print('app seen as: ' + sapp.getName())
+    print('main window as: ' + sapp.getWindow())
+    try:
+        accept()            
+    except FindFailed:
+        print('Echec de la première tentative, attente fenêtre')
+        wait("1505729222650.png", 35)
+        click("1505729222650.png") 
+        print('Attente Eval')
+        wait("1509617897369.png", 15)
+        click("1509617897369.png")
+        print('OK')
+        sapp.close()
         sapp.open()
-        try:
-            accept()            
-        except FindFailed:
-            print('Echec de la première tentative, attente fenêtre')
-            wait("1505729222650.png", 35)
-            click("1505729222650.png") 
-            print('Attente Eval')
-            wait("1509617897369.png", 15)
-            click("1509617897369.png")
-            print('OK')
-            sapp.close()
-            sapp.open()
-            wait(2)
-            accept()
+        wait(2)
+        accept()
