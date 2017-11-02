@@ -4,7 +4,8 @@ apps = { #"After": r"Adobe After Effects CC 2015\Support Files\AfterFX.exe",
         #, "Bridge": r"Adobe Bridge CC (64 Bit)\Bridge.exe",
         #"LightRoom": r"Adobe Lightroom\lightroom.exe",
         #"Premiere": r"Adobe Premiere Pro CC 2015\Adobe Premiere Pro.exe",
-        "Dreamweaver": r"Adobe Dreamweaver CC 2015\Dreamweaver.exe"
+        #"Dreamweaver": r"Adobe Dreamweaver CC 2015\Dreamweaver.exe",
+        "Illustrator": r"C:\Program Files\Adobe\Adobe Illustrator CC 2015\Support Files\Contents\Windows\Illustrator.exe"
         }
 def accept():
     print('En attente du bouton accepter pour 15s...')
@@ -26,5 +27,7 @@ for app, path in apps.items():
             wait("1509617897369.png", 15)
             click("1509617897369.png")
             print('OK')
+            sapp.close()
+            sapp.open()
             wait(2)
             accept()
