@@ -11,10 +11,13 @@ apps = { "After": r"Adobe After Effects CC 2015\Support Files\AfterFX.exe",
         "Photoshop": r"Adobe Photoshop CC 2015\Photoshop.exe"
         }
 def accept():
-    print('En attente du bouton accepter pour 15s...')
-    wait("1509618378336.png", 15)
-    print('OK, clic accepter')
-    click("1509618378336.png")         
+    if find("1509638042137.png"):
+        click("1509638042137.png")
+    else:
+        print('En attente du bouton accepter pour 15s...')
+        wait("1509618378336.png", 15)
+        print('OK, clic accepter')
+        click("1509618378336.png")         
 
 for app, path in apps.items():
     setFindFailedResponse(ABORT)
@@ -28,17 +31,19 @@ for app, path in apps.items():
     except FindFailed:
         setFindFailedResponse(SKIP)
         if not sapp.hasWindow():
-            delay = 35
+            delay = 45
         else:
             delay = 2
         print('Echec de la premiere tentative, attente fenetre pendant {delay} secondes'.format(delay=delay))
-        wait("1505729222650.png", delay)
-        click("1505729222650.png") 
-        print('Attente Eval')
-        wait("1509617897369.png", delay/2)
-        click("1509617897369.png")
-        print('OK')
+        if wait("1505729222650.png", delay):
+            click("1505729222650.png") 
+            print('Attente Eval')
+            wait(delay/2)
+            wait("1509617897369.png", delay/2)
+            click("1509617897369.png")
+            print('OK')
         wait(delay)
+        
         accept()
     finally:
         wait(3)
