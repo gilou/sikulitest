@@ -14,7 +14,8 @@ def accept():
     print('OK, clic accepter')
     click("1509618378336.png")         
 
-for app, path in apps.items()[-1:]:
+for app, path in apps.items():
+    setFindFailedResponse(ABORT)
     print('Considering ' + app + '(' + root + path + ')')
     sapp = App(root + path)
     if not sapp.isRunning(): sapp.open()
