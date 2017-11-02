@@ -31,7 +31,7 @@ for app, path in apps.items():
             delay = 35
         else:
             delay = 2
-        print('Echec de la premiere tentative, attente fenetre pendant ' + delay + ' secondes')
+        print('Echec de la premiere tentative, attente fenetre pendant {delay} secondes'.format(delay=delay))
         wait("1505729222650.png", delay)
         click("1505729222650.png") 
         print('Attente Eval')
