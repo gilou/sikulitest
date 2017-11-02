@@ -1,3 +1,4 @@
+#! /usr/bin/env python
 # -*- coding: utf-8 -*-
 root = 'C:\\Program Files\\Adobe\\'
 apps = { "After": r"Adobe After Effects CC 2015\Support Files\AfterFX.exe",
@@ -30,7 +31,7 @@ for app, path in apps.items():
             delay = 35
         else:
             delay = 2
-        print('Echec de la première tentative, attente fenêtre pendant ' + delay + ' secondes')
+        print('Echec de la premiere tentative, attente fenetre pendant ' + delay + ' secondes')
         wait("1505729222650.png", delay)
         click("1505729222650.png") 
         print('Attente Eval')
