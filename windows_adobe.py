@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
+import os
 root = 'C:\\Program Files\\Adobe\\'
 apps = { "After": r"Adobe After Effects CC 2015\Support Files\AfterFX.exe",
         "Audition": r"Adobe Audition CC 2015\Adobe Audition CC.exe",
@@ -23,6 +24,9 @@ def accept():
 for app, path in apps.items():
     setFindFailedResponse(ABORT)
     print('Considering ' + app + '(' + root + path + ')')
+    print('killing any licensing utilities stil running (why ?)')
+    os.system('taskkill /f /im adobe_licutil.exe')
+    wait(3)
     sapp = App(root + path)
     if not sapp.isRunning(): sapp.open()
     print('app seen as: ' + sapp.getName())
