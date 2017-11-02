@@ -11,6 +11,7 @@ apps = { "After": r"Adobe After Effects CC 2015\Support Files\AfterFX.exe",
         "Photoshop": r"Adobe Photoshop CC 2015\Photoshop.exe"
         }
 def accept():
+    wait(30)
     if find("1509638042137.png"):
         click("1509638042137.png")
     else:
