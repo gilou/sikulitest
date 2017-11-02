@@ -23,8 +23,13 @@ for app, path in apps.items()[-1:]:
     try:
         accept()            
     except FindFailed:
+        setFindFailedResponse(SKIP)
+        if not sapp.hasWindow():
+            delay = 35
+        else:
+            delay = 2
         print('Echec de la première tentative, attente fenêtre')
-        wait("1505729222650.png", 35)
+        wait("1505729222650.png", delay)
         click("1505729222650.png") 
         print('Attente Eval')
         wait("1509617897369.png", 15)
