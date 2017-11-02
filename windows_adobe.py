@@ -1,11 +1,12 @@
 root = 'C:\\Program Files\\Adobe\\'
-apps = { #"After": r"Adobe After Effects CC 2015\Support Files\AfterFX.exe",
-        #"Audition": r"Adobe Audition CC 2015\Adobe Audition CC.exe"
-        #, "Bridge": r"Adobe Bridge CC (64 Bit)\Bridge.exe",
-        #"LightRoom": r"Adobe Lightroom\lightroom.exe",
-        #"Premiere": r"Adobe Premiere Pro CC 2015\Adobe Premiere Pro.exe",
-        #"Dreamweaver": r"Adobe Dreamweaver CC 2015\Dreamweaver.exe",
-        "Illustrator": r"Adobe Illustrator CC 2015\Support Files\Contents\Windows\Illustrator.exe"
+apps = { "After": r"Adobe After Effects CC 2015\Support Files\AfterFX.exe",
+        "Audition": r"Adobe Audition CC 2015\Adobe Audition CC.exe",
+        "Bridge": r"Adobe Bridge CC (64 Bit)\Bridge.exe",
+        "LightRoom": r"Adobe Lightroom\lightroom.exe",
+        "Premiere": r"Adobe Premiere Pro CC 2015\Adobe Premiere Pro.exe",
+        "Dreamweaver": r"Adobe Dreamweaver CC 2015\Dreamweaver.exe",
+        "Illustrator": r"Adobe Illustrator CC 2015\Support Files\Contents\Windows\Illustrator.exe",
+        "Photoshop": r"Adobe Photoshop CC 2015\Photoshop.exe"
         }
 def accept():
     print('En attente du bouton accepter pour 15s...')
@@ -13,7 +14,7 @@ def accept():
     print('OK, clic accepter')
     click("1509618378336.png")         
 
-for app, path in apps.items():
+for app, path in apps.items()[-1:]:
         print('Considering ' + app + '(' + root + path + ')')
         sapp = App(root + path)
         sapp.open()
