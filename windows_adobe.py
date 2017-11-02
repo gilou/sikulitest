@@ -10,9 +10,9 @@ for app, path in apps.items():
         try:
             wait("1505729222650.png", 20*1000)
             click("1505729222650.png") 
-            wait("1509617897369.png")
+            wait("1509617897369.png", 20*100)
             click("1509617897369.png")
             wait(2)
         except FindFailed:
-
+            print('Failed')
             wait(2)
