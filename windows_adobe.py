@@ -8,10 +8,12 @@ for app, path in apps.items():
         sapp = App(root + path)
         sapp.open()
         try:
-            wait("1505729222650.png", 20*1000)
+            wait("1505729222650.png", 35)
             click("1505729222650.png") 
-            wait("1509617897369.png", 20*100)
+            wait("1509617897369.png", 5)
             click("1509617897369.png")
+            wait("1509618378336.png", 35)
+            click("1509618378336.png")
             wait(2)
         except FindFailed:
             print('Failed')
