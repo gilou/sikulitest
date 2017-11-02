@@ -5,7 +5,7 @@ apps = { #"After": r"Adobe After Effects CC 2015\Support Files\AfterFX.exe",
         #"LightRoom": r"Adobe Lightroom\lightroom.exe",
         #"Premiere": r"Adobe Premiere Pro CC 2015\Adobe Premiere Pro.exe",
         #"Dreamweaver": r"Adobe Dreamweaver CC 2015\Dreamweaver.exe",
-        "Illustrator": r"C:\Program Files\Adobe\Adobe Illustrator CC 2015\Support Files\Contents\Windows\Illustrator.exe"
+        "Illustrator": r"Adobe Illustrator CC 2015\Support Files\Contents\Windows\Illustrator.exe"
         }
 def accept():
     print('En attente du bouton accepter pour 15s...')
