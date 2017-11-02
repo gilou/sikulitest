@@ -29,14 +29,16 @@ for app, path in apps.items():
             delay = 35
         else:
             delay = 2
-        print('Echec de la première tentative, attente fenêtre')
+        print('Echec de la première tentative, attente fenêtre pendant ' + delay + ' secondes')
         wait("1505729222650.png", delay)
         click("1505729222650.png") 
         print('Attente Eval')
-        wait("1509617897369.png", 15)
+        wait("1509617897369.png", delay/2)
         click("1509617897369.png")
         print('OK')
-        sapp.close()
-        sapp.open()
-        wait(2)
+        wait(delay)
         accept()
+    finally:
+        wait(3)
+        sapp.close()
+        wait(3)
