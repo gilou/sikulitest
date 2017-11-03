@@ -19,7 +19,7 @@ def accept():
         wait("1509618378336.png", 15)
         click("1509618378336.png")         
 
-notfull = Do.popAsk("Lancement du script pour seulement une appli ?", "Choix appli", 2)
+notfull = Do.popAsk("Lancement du script pour seulement une appli ?", "Choix appli (3 secondes)", 3)
 
 if notfull:
     app = select("Choisissez un soft a lancer dans la liste", options = apps.keys())
@@ -38,7 +38,7 @@ for app, path in sorted(apps.items()):
                                             )
     )
     print('Waiting for {} to spawn a window'.format(sapp.getName()))
-    while not sapp.hasWindow():
+    while not sapp.hasWindow() and not find("1509720601306.png"):
         wait(1)
     try:
         sapp.focus()
