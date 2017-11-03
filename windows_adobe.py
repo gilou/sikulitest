@@ -71,5 +71,6 @@ for app, path in sorted(apps.items()):
         for tentative in range(maxdelay):
             wait(1)            
             if sapp.hasWindow():
+                wait(3)
                 break
         sapp.close()
