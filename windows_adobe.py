@@ -38,11 +38,16 @@ for app, path in sorted(apps.items()):
                                             )
     )
     print('Waiting for {} to spawn a window'.format(sapp.getName()))
-    while not sapp.hasWindow() and not find("1509720601306.png"):
-        wait(1)
     try:
-        sapp.focus()
+        while not sapp.hasWindow(): 
+            try:
+                find("1509720601306.png")
+                break
+            except FindFailed:
+                wait(1)
+        
         accept()
+
     except FindFailed:
         setFindFailedResponse(SKIP)
         delay = 10
