@@ -23,6 +23,8 @@ def accept():
             click("1509618378336.png")
 
 def waitfor_licutil(delay=maxdelay, app=None):
+    state = getFindFailedResponse()
+    setFindFailedResponse(ABORT)
     for tentative in range(delay):
         try:
             find("1509720601306.png")
@@ -31,6 +33,7 @@ def waitfor_licutil(delay=maxdelay, app=None):
             if app and sapp.hasWindow():
                 break
         wait(1)
+    setFindFailedResponse(state)
 
     
 notfull = Do.popAsk("Lancement du script pour seulement une appli ?", "Choix appli (3 secondes)", 3)
