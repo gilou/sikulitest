@@ -25,7 +25,7 @@ for app, path in apps.items():
     setFindFailedResponse(ABORT)
     print('Considering ' + app + '(' + root + path + ')')
     print('killing any licensing utilities stil running (why ?)')
-    os.system('taskkill /f /im adobe_licutil.exe')
+    os.system('taskkill /f /im "adobe_licutil.exe" /t')
     wait(3)
     sapp = App(root + path)
     if not sapp.isRunning(): sapp.open()
