@@ -18,23 +18,25 @@ def accept():
     if find("1509638042137.png"):
         click("1509638042137.png")
     else:
-        print('En attente du bouton accepter pour 30s...')
-        if wait("1509618378336.png", 30):
+        print('En attente du bouton accepter pour 40s...')
+        if wait("1509618378336.png", 40):
             click("1509618378336.png")
 
 def waitfor_licutil(delay=maxdelay, app=None):
     state = getFindFailedResponse()
     setFindFailedResponse(ABORT)
+    found = False
     for tentative in range(delay):
         try:
             find("1509720601306.png")
+            found = True
             break
         except FindFailed:
             if app and sapp.hasWindow():
                 break
         wait(1)
     setFindFailedResponse(state)
-
+    return found
     
 notfull = Do.popAsk("Lancement du script pour seulement une appli ?", "Choix appli (3 secondes)", 3)
 
@@ -71,7 +73,8 @@ for app, path in sorted(apps.items()):
             click("1509617897369.png")
             print('OK')
         print('et on attend...')
-        waitfor_licutil(maxdelay, sapp)
+        if not waitfor_licutil(maxdelay, sapp):
+            break
         accept()
     finally:
         print('waiting for soft to give sign of life')
