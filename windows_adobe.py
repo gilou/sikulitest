@@ -17,7 +17,6 @@ def accept():
     else:
         print('En attente du bouton accepter pour 15s...')
         wait("1509618378336.png", 15)
-        print('OK, clic accepter')
         click("1509618378336.png")         
 
 notfull = Do.popAsk("Lancement du script pour seulement une appli ?", "Choix appli", 2)
@@ -30,6 +29,7 @@ for app, path in sorted(apps.items()):
     setFindFailedResponse(ABORT)
     print('Considering ' + app + '(' + root + path + ')')
     sapp = App(root + path)
+    os.system("taskkill /f /t /im adobe_lic.exe")
     if not sapp.isRunning(): sapp.open()
     print('app seen as: {} main window as: {} PID is {}'.format(
                                                 sapp.getName(),
