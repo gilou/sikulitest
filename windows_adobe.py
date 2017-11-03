@@ -24,7 +24,8 @@ def accept():
 notfull = Do.popAsk("Lancement du script pour seulement une appli ?", "Choix appli", 2)
 
 if notfull:
-   apps = [ select("Choisissez un soft a lancer dans la liste", options = apps.keys()) ] 
+    app = select("Choisissez un soft a lancer dans la liste", options = apps.keys())
+    apps = { app, apps[app] }
 
 for app, path in sorted(apps.items()):
     setFindFailedResponse(ABORT)
