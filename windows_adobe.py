@@ -33,9 +33,9 @@ for app, path in sorted(apps.items()):
     if not sapp.isRunning(): sapp.open()
     print('app seen as: {} main window as: {} PID is {}'.format(
                                                 sapp.getName(),
-                                                sapp.getWindow()),
+                                                sapp.getWindow(),
                                                 sapp.getPID()
-                                                )
+                                            )
     )
     
     while not sapp.hasWindow():
