@@ -60,7 +60,7 @@ for app, path in sorted(apps.items()):
         if wait("1505729222650.png", delay):
             click("1505729222650.png") 
             print('Attente Eval')
-            wait("1509617897369.png", delay/2)
+            wait("1509617897369.png", delay)
             click("1509617897369.png")
             print('OK')
         print('et on attend...')
