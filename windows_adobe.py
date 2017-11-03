@@ -19,7 +19,7 @@ def accept():
         click("1509638042137.png")
     else:
         print('En attente du bouton accepter pour 15s...')
-        if wait("1509618378336.png", 15):
+        if wait("1509618378336.png", 30):
             click("1509618378336.png")
 
 notfull = Do.popAsk("Lancement du script pour seulement une appli ?", "Choix appli (3 secondes)", 3)
@@ -67,6 +67,7 @@ for app, path in sorted(apps.items()):
         wait(delay)
         accept()
     finally:
+        print('waiting for soft to give sign of life')
         for tentative in range(maxdelay):
             wait(1)            
             if sapp.hasWindow():
