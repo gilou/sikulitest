@@ -21,7 +21,7 @@ def accept():
         print('OK, clic accepter')
         click("1509618378336.png")         
 
-notfull = popAsk("Lancement du script complet sans intervention dans 2 secondes", 2)
+notfull = popAsk("Lancement du script complet sans intervention dans 2 secondes", "Choix appli", 2)
 
 if notfull:
    apps = [ select("Choisissez un soft à lancer dans la liste", options = apps.key()) ] 
