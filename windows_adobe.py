@@ -11,6 +11,9 @@ apps = { "After": r"Adobe After Effects CC 2015\Support Files\AfterFX.exe",
         "Illustrator": r"Adobe Illustrator CC 2015\Support Files\Contents\Windows\Illustrator.exe",
         "Photoshop": r"Adobe Photoshop CC 2015\Photoshop.exe"
         }
+
+maxdelay=60
+
 def accept():
     if find("1509638042137.png"):
         click("1509638042137.png")
@@ -39,17 +42,17 @@ for app, path in sorted(apps.items()):
     )
     print('Waiting for {} to spawn a window'.format(sapp.getName()))
 
-    while not sapp.hasWindow(): 
+    for tentative in range(maxdelay):
         try:
             find("1509720601306.png")
             break
         except FindFailed:
-            print('Waiting')
-        else:
-            wait(1)
+            if sapp.hasWindow():
+                break
+        wait(1)
     try:        
         accept()
-        
+               
     except FindFailed:
         setFindFailedResponse(SKIP)
         delay = 10
@@ -60,9 +63,12 @@ for app, path in sorted(apps.items()):
             wait("1509617897369.png", delay/2)
             click("1509617897369.png")
             print('OK')
+        print('et on attend...')
         wait(delay)
         accept()
     finally:
-        while not sapp.hasWindow():
-            wait(1)
+        for tentative in range(maxdelay):
+            wait(1)            
+            if sapp.hasWindow():
+                break
         sapp.close()
