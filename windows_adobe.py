@@ -21,7 +21,7 @@ def accept():
         print('OK, clic accepter')
         click("1509618378336.png")         
 
-for app, path in apps.items():
+for app, path in sorted(apps.items()):
     setFindFailedResponse(ABORT)
     print('Considering ' + app + '(' + root + path + ')')
     print('killing any licensing utilities stil running (why ?)')
