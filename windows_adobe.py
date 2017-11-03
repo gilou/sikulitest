@@ -16,8 +16,8 @@ def accept():
         click("1509638042137.png")
     else:
         print('En attente du bouton accepter pour 15s...')
-        wait("1509618378336.png", 15)
-        click("1509618378336.png")         
+        if wait("1509618378336.png", 15):
+            click("1509618378336.png")
 
 notfull = Do.popAsk("Lancement du script pour seulement une appli ?", "Choix appli (3 secondes)", 3)
 
@@ -44,10 +44,12 @@ for app, path in sorted(apps.items()):
             find("1509720601306.png")
             break
         except FindFailed:
+            print('Waiting')
+        else:
             wait(1)
     try:        
         accept()
-
+        
     except FindFailed:
         setFindFailedResponse(SKIP)
         delay = 10
