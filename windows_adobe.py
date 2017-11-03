@@ -13,15 +13,26 @@ apps = { "After": r"Adobe After Effects CC 2015\Support Files\AfterFX.exe",
         }
 
 maxdelay=60
-
+ 
 def accept():
     if find("1509638042137.png"):
         click("1509638042137.png")
     else:
-        print('En attente du bouton accepter pour 15s...')
+        print('En attente du bouton accepter pour 30s...')
         if wait("1509618378336.png", 30):
             click("1509618378336.png")
 
+def waitfor_licutil(delay=maxdelay, app=None):
+    for tentative in range(delay):
+        try:
+            find("1509720601306.png")
+            break
+        except FindFailed:
+            if app and sapp.hasWindow():
+                break
+        wait(1)
+
+    
 notfull = Do.popAsk("Lancement du script pour seulement une appli ?", "Choix appli (3 secondes)", 3)
 
 if notfull:
@@ -42,14 +53,7 @@ for app, path in sorted(apps.items()):
     )
     print('Waiting for {} to spawn a window'.format(sapp.getName()))
 
-    for tentative in range(maxdelay):
-        try:
-            find("1509720601306.png")
-            break
-        except FindFailed:
-            if sapp.hasWindow():
-                break
-        wait(1)
+    waitfor_licutil(maxdelay, sapp)
     try:        
         accept()
                
@@ -64,7 +68,7 @@ for app, path in sorted(apps.items()):
             click("1509617897369.png")
             print('OK')
         print('et on attend...')
-        wait(delay)
+        waitfor_licutil(maxdelay, sapp)
         accept()
     finally:
         print('waiting for soft to give sign of life')
