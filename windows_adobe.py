@@ -12,7 +12,6 @@ apps = { "After": r"Adobe After Effects CC 2015\Support Files\AfterFX.exe",
         "Photoshop": r"Adobe Photoshop CC 2015\Photoshop.exe"
         }
 def accept():
-    wait(30)
     if find("1509638042137.png"):
         click("1509638042137.png")
     else:
@@ -30,21 +29,23 @@ if notfull:
 for app, path in sorted(apps.items()):
     setFindFailedResponse(ABORT)
     print('Considering ' + app + '(' + root + path + ')')
-    print('killing any licensing utilities stil running (why ?)')
-    os.system('taskkill /f /im "adobe_licutil.exe" /t')
-    wait(3)
     sapp = App(root + path)
     if not sapp.isRunning(): sapp.open()
-    print('app seen as: ' + sapp.getName())
-    print('main window as: ' + sapp.getWindow())
+    print('app seen as: {} main window as: {} PID is {}'.format(
+                                                sapp.getName(),
+                                                sapp.getWindow()),
+                                                sapp.getPID()
+                                                )
+    )
+    
+    while not sapp.hasWindow():
+        wait(1)
     try:
-        accept()            
+        sapp.focus()
+        accept() 
     except FindFailed:
         setFindFailedResponse(SKIP)
-        if not sapp.hasWindow():
-            delay = 45
-        else:
-            delay = 2
+        delay = 10
         print('Echec de la premiere tentative, attente fenetre pendant {delay} secondes'.format(delay=delay))
         if wait("1505729222650.png", delay):
             click("1505729222650.png") 
@@ -54,9 +55,7 @@ for app, path in sorted(apps.items()):
             click("1509617897369.png")
             print('OK')
         wait(delay)
-        
         accept()
     finally:
         wait(3)
         sapp.close()
-        wait(3)
